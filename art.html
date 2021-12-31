@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喵</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="./styles/index.css">
+
+  <style>
+    .container {
+      padding: 0 15%;
+    }
+    .header {
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+
+    :root {
+      --num: 3;
+      --space: 32px;
+    }
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      width: calc(100% + var(--space));
+    }
+    .box {
+      margin: 0 var(--space) var(--space) 0;
+      width: calc((100% / var(--num)) - var(--space));
+    }
+    img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+    p {
+      margin-top: 10px;
+      margin-bottom: 32px;
+      font-size: var(--font-size);
+      color: var(--color-font-important);
+      font-weight: 500;
+    }
+
+    @media (max-width: 992px) {
+      .container {
+        padding: 0 20px;
+      }
+      .header {
+        padding-top: 16px;
+      }
+      .list {
+        width: 100%;
+      }
+      .box {
+        margin: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Canvas 动效</h1>
+    </div>
+  
+    <div class="list">
+      <div class="box" onclick="window.open('./art/clock.html', '_blank')">
+        <img src="../images/cover_clock.png" alt="">
+        <p>时钟，设计来自「锤子科技」</p>
+      </div>
+
+      <div class="box" onclick="window.open('./art/lattice.html', '_blank')">
+        <img src="../images/cover_lattice.png" alt="">
+        <p>点阵显示的日期戳 </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
