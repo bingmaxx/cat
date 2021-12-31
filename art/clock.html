@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喵喵喵</title>
+
+  <style>
+    #app {
+      width: 100%;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      width: 400px;
+      height: 400px;
+    }
+    .tail {
+      width: 100%;
+      padding: 20px 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    img {
+      width: 16px;
+      margin-right: 8px;
+    }
+    p {
+      font-size: var(--font-size-xs);
+      color: var(--color-font-normal);
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      canvas {
+        width: 80vw;
+        height: 80vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <canvas id="clock"></canvas>
+    
+    <div class="tail">
+      <img src="../images/smartisan.png" alt="">
+      <p>Designed by Smartisan</p>
+    </div>
+  </div>
+
+  <script type="module">
+    import Canvas from './js/canvas.class.js';
+    import Clock from './js/clock.class.js';
+
+    const canvasId = 'clock';
+    const getSize = () => {
+      const elem = document.querySelector(`#${canvasId}`);
+      return {
+        width: elem.clientWidth,
+        height: elem.clientWidth,
+      };
+    }
+
+    const init = () => {
+      const { width, height } = getSize();
+      const canvas = new Canvas({
+        canvas: canvasId,
+        width,
+        height,
+        radio: window.devicePixelRatio,
+      });
+
+      const clock = new Clock({
+        Canvas: canvas,
+      });
+
+      setInterval(() => {
+        canvas.clear();
+        clock.refrash();
+      }, 1000);
+    }
+
+    init();
+  </script>
+</body>
+
+</html>

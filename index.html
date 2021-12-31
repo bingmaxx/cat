@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喵喵喵</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="./styles/index.css">
+
+  <style>
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p {
+      font-size: var(--font-size-lg);
+      font-weight: 500;
+      color: var(--color-font-extra);
+    }
+
+    .pro-beian {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background-color: var(--navbar-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    a {
+      font-size: var(--font-size-xs);
+      color: var(--color-font-normal);
+      cursor: pointer;
+    }
+    a:hover {
+      color: var(--color-theme);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <p>Nothing...</p>
+    </div>
+  
+    <div class="pro-beian">
+      <a href="https://beian.miit.gov.cn" target="_blank">工信部 皖ICP备18008548号-1</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+      }
+    });
+  </script>
+</body>
+</html>
