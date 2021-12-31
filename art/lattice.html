@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喵喵喵</title>
+  <link rel="stylesheet" href="../styles/index.css">
+
+  <style>
+    .canvas-container, .action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .canvas-container {
+      padding: 1rem;
+    }
+    canvas {
+      height: 80vh;
+      border-radius: 4px;
+      box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+    img {
+      width: 36px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 992px) {
+      canvas {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="canvas-container">
+    <canvas id="canvas-id" />
+  </div>
+
+  <div class="action">
+    <img id="download" src="../images/download.png" alt="">
+  </div>
+
+  <script type="module">
+    import Canvas from './js/canvas.class.js';
+    import Render from './js/lattice.class.js';
+    
+    const width = 720;
+    const height = 1280;
+    const radio = window.devicePixelRatio;
+    const canvasID = 'canvas-id';
+    let canvas = null;
+
+    const getDate = () => {
+      const date = new Date();
+      const YY = date.getFullYear();
+      const MM = date.getMonth() + 1;
+      const DD = date.getDate();
+      return `${YY}${String(MM).padStart(2, '0')}${String(DD).padStart(2, '0')}`;
+    }
+
+    const init = () => {
+        canvas = new Canvas({
+          canvas: canvasID,
+          width,
+          height,
+          radio,
+        });
+        const render = new Render({ Canvas: canvas });
+
+        const data = {
+          right: 20,
+          bottom: 20,
+          space: 10,
+          list: getDate(),
+          style: {
+            color_0: 'rgb(233, 233, 233)',
+            color_1: 'rgb(88, 88, 88)',
+          },
+        };
+        render.drawNums(data);
+      }
+      init();
+
+      document.onmousedown = (ev) => {
+        if (!ev.target || ev.target.id !== 'download') return;
+        
+        canvas.download();
+      };
+  </script>
+</body>
+
+</html>

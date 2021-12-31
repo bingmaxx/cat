@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>喵喵喵</title>
+  <link rel="stylesheet" href="../styles/index.css">
+
+  <style>
+    :root {
+      --space: 1rem;
+    }
+    .container {
+      padding: var(--space);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      height: calc(100vh - 2 * var(--space));
+      border-radius: 4px;
+      box-shadow: 2px 2px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 992px) {
+      canvas {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <canvas id="canvas-id" />
+  </div>
+
+  <script type="module">
+    import Canvas from './js/canvas.class.js';
+    import Render from './js/lattice.class.js';
+
+    const init = () => {
+      const canvasID = 'canvas-id';
+      const canvas = new Canvas({
+        canvas: canvasID,
+        radio: window.devicePixelRatio,
+      });
+      const render = new Render({ Canvas: canvas });
+
+      const data = {
+        padding: 20,
+        space: 10,
+        style: {
+          color_0: 'rgb(233, 233, 233)',
+          color_1: 'rgb(88, 88, 88)',
+        },
+      };
+      render.drawAllByType(data);
+      // this.render.Canvas.download({});
+    }
+    init();
+
+  </script>
+</body>
+
+</html>

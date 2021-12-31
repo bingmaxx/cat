@@ -57,7 +57,7 @@ class Canvas {
   /**
    * 将画布保存为图片
    */
-  download({ mimeType, quality }) {
+  download({ mimeType, quality } = {}) {
     mimeType = mimeType || 'image/png';
     quality = quality || 1;
     console.log(this.canvas);
