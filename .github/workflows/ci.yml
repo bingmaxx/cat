@@ -20,5 +20,4 @@ jobs:
         ARGS: "-rltgoDzvO --delete"
         TARGET: ${{ secrets.REMOTE_TARGET }}
         SOURCE: "./"
-        EXCLUDE: "/.github, .gitignore"
-        
+        EXCLUDE: "/.*, .*, LICENSE, README.md"
