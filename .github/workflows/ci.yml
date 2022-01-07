@@ -11,9 +11,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         persist-credentials: false
-    # - name: Deploy
-    #   uses: JamesIves/github-pages-deploy-action@releases/v3
-    #   with:
-    #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-    #     BRANCH: gh-pages
-    #     FOLDER: build
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@v2
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        ARGS: "-rltgoDzvO --delete"
+        TARGET: ${{ secrets.REMOTE_TARGET }}
+        SOURCE: "./"
+        EXCLUDE: "/.github, .gitignore"
+        
